@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8lydosbeh141"
-path="res://.godot/imported/char_attack_down_anim_strip_6.png-adca3de5ffef5d408d215dad118609f4.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Player/Sprites/Char_Sprites/char_attack_down_anim_strip_6.png"
-dest_files=["res://.godot/imported/char_attack_down_anim_strip_6.png-adca3de5ffef5d408d215dad118609f4.ctex"]
 
 [params]
 

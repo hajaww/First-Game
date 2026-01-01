@@ -1,8 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxcbcyao3a1rb"]
+[gd_scene load_steps=4 format=3 uid="uid://bxcbcyao3a1rb"]
 
 [ext_resource type="PackedScene" uid="uid://dqidnxbhppavs" path="res://Player/player.tscn" id="1_rupst"]
+[ext_resource type="PackedScene" uid="uid://b0cb28u0kk3ic" path="res://Tile Maps/grass-01.tscn" id="2_wt17y"]
+[ext_resource type="PackedScene" uid="uid://dc0nuxyqpglyc" path="res://Props/Plants/plant.tscn" id="3_m8u5f"]
 
 [node name="Playground" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_rupst")]
-position = Vector2(236, 138)
+z_index = 0
+y_sort_enabled = false
+position = Vector2(239, 127)
+
+[node name="Grass01" parent="." instance=ExtResource("2_wt17y")]
+
+[node name="Plant" parent="." instance=ExtResource("3_m8u5f")]
+position = Vector2(138, 189)
+
+[node name="Plant2" parent="." instance=ExtResource("3_m8u5f")]
+position = Vector2(294, 226)
+
+[node name="Plant3" parent="." instance=ExtResource("3_m8u5f")]
+position = Vector2(187, 129)
+
+[node name="Plant4" parent="." instance=ExtResource("3_m8u5f")]
+position = Vector2(329, 92)
+
+[node name="Plant5" parent="." instance=ExtResource("3_m8u5f")]
+position = Vector2(48, 228)

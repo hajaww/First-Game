@@ -1,6 +1,7 @@
 class_name State
 extends Node
 
+# Reference ke Player (di-inject oleh StateMachine.Initialize)
 var player: Player
 
 func Enter() -> void:

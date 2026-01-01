@@ -1,9 +1,9 @@
 class_name PlayerStateMachine
 extends Node
 
-var states: Array[State] = []
-var prev_state: State
-var current_state: State
+var states: Array = []          # longgarkan typing biar gak ribet
+var prev_state: State = null
+var current_state: State = null
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
@@ -29,7 +29,7 @@ func Initialize(_player: Player) -> void:
 			states.append(c)
 
 	if states.size() > 0:
-		ChangeState(states[0])
+		ChangeState(states[0]) # state pertama = Idle
 		process_mode = Node.PROCESS_MODE_INHERIT
 
 func ChangeState(new_state: State) -> void:
