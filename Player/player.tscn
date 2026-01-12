@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://dqidnxbhppavs"]
+[gd_scene load_steps=110 format=3 uid="uid://dqidnxbhppavs"]
 
 [ext_resource type="Script" uid="uid://dnmria0jgarkx" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://cwfu2mtvgsqby" path="res://Player/Sprites/Char_Sprites/char_idle_down_anim_strip_6.png" id="2_4ntmi"]
@@ -20,9 +20,8 @@
 [ext_resource type="Script" uid="uid://cq6rqbo1xom6f" path="res://Player/Scripts/state_walk.gd" id="10_apopc"]
 [ext_resource type="Script" uid="uid://bj8s3818rmfmp" path="res://Player/Scripts/state_attack.gd" id="15_dkpta"]
 [ext_resource type="AudioStream" uid="uid://g38qf0vfxs6f" path="res://Player/Audio/SwordSwoosh.wav" id="16_lfmf2"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_edjgo"]
-radius = 5.0
+[ext_resource type="PackedScene" uid="uid://bhxdppgqkyb20" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="21_7emwf"]
+[ext_resource type="Script" uid="uid://datx5or5fifjx" path="res://Player/Scripts/PlayerInteractionsHost.gd" id="21_hshwv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6pogt"]
 atlas = ExtResource("2_gu6f8")
@@ -665,6 +664,12 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_edjgo"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hshwv"]
+radius = 6.0
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
 y_sort_enabled = true
@@ -674,16 +679,14 @@ motion_mode = 1
 wall_min_slide_angle = 0.17453292
 script = ExtResource("1_4ntmi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_edjgo")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -4)
 scale = Vector2(1.185, 1)
 sprite_frames = SubResource("SpriteFrames_btcbx")
-animation = &"attack_up"
-frame_progress = 0.030660847
+animation = &"idle_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_edjgo")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("8_od3ui")
@@ -705,3 +708,14 @@ zoom = Vector2(1.57, 1.57)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
 max_polyphony = 4
+
+[node name="Interactions" type="Node2D" parent="."]
+script = ExtResource("21_hshwv")
+
+[node name="HurtBox" parent="Interactions" instance=ExtResource("21_7emwf")]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/HurtBox"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_hshwv")
+debug_color = Color(1, 0, 0.20784314, 0.41960785)

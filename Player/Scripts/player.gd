@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var fsm: PlayerStateMachine = $StateMachine
 
+signal DirectionChanged( new_direction: Vector2)
+
 var direction: Vector2 = Vector2.ZERO
 var last_dir: String = "down"
 # -- VARIABEL COMBO --
@@ -27,10 +29,23 @@ func SetDirection() -> bool:
 	if direction == Vector2.ZERO:
 		return false
 	
+	# 1. Tentukan arah string (untuk animasi)
 	if abs(direction.x) > abs(direction.y):
 		last_dir = "left" if direction.x < 0 else "right"
 	else:
 		last_dir = "up" if direction.y < 0 else "down"
+	
+	# 2. Konversi string ke Vector2 (untuk rotasi Hitbox)
+	var dir_vector = Vector2.DOWN
+	match last_dir:
+		"up": dir_vector = Vector2.UP
+		"down": dir_vector = Vector2.DOWN
+		"left": dir_vector = Vector2.LEFT
+		"right": dir_vector = Vector2.RIGHT
+	
+	# 3. FIX: Emit signal SEBELUM return
+	DirectionChanged.emit( dir_vector )
+	
 	return true
 
 func UpdateAnimation(kind: String) -> void:
