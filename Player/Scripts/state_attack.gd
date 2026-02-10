@@ -10,7 +10,7 @@ extends State
 # Referensi Node (Pastikan path sesuai Scene Tree)
 @onready var idle = $"../Idle"
 @onready var audio_player : AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
-@onready var hurt_box: HurtBox = $"../../Interactions/HurtBox"
+@onready var hurt_box: HurtBox = %AttackHurtBox
 
 # Variabel Internal State
 var target_frame: int = 0  # Frame berapa animasi harus berhenti
