@@ -5,15 +5,14 @@ func _ready() -> void:
 	UpdateLimits( LevelManager.current_tilemap_bounds )
 
 func UpdateLimits( bounds : Array[ Vector2 ]) -> void:
-	# Jika data masih kosong, jangan proses
-	if bounds.size() == 0:
+	if bounds == []:
 		return
 	
-	# Set limit camera internal Godot
-	limit_left = int( bounds[0].x )
-	limit_top = int( bounds[0].y )
+	limit_left = int( max(bounds[0].x, 0) ) 
+	limit_top = int( max(bounds[0].y, 0) )
+	
 	limit_right = int( bounds[1].x )
 	limit_bottom = int( bounds[1].y )
 	
-	# Debug print (Lihat di tab Output bawah saat game jalan)
-	print("Camera Limits Updated: Left:", limit_left, " Right:", limit_right, " Top:", limit_top, " Bottom:", limit_bottom)
+	# Debug untuk memastikan angka yang masuk sekarang benar
+	print("Camera Limits FORCED: Left:", limit_left, " Right:", limit_right, " Top:", limit_top, " Bottom:", limit_bottom)
