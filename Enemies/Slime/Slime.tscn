@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://vmxvduguxuc"]
+
+[ext_resource type="Texture2D" uid="uid://fb5rvwtjoxk5" path="res://Enemies/Slime/Gemini_Generated_Image_iyxdmmiyxdmmiyxd.png" id="1_hsbk2"]
+
+[node name="Slime" type="CharacterBody2D" unique_id=1922876229]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=711764933]
+texture = ExtResource("1_hsbk2")
