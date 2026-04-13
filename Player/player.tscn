@@ -687,7 +687,7 @@ shape = SubResource("CircleShape2D_edjgo")
 position = Vector2(0, -4)
 scale = Vector2(1.185, 1)
 sprite_frames = SubResource("SpriteFrames_btcbx")
-animation = &"idle_down"
+animation = &"attack_left"
 
 [node name="StateMachine" type="Node" parent="." unique_id=47341051]
 script = ExtResource("8_od3ui")
