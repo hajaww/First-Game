@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dk7yx78b3yb38" path="res://Enemies/Slime/Shadow.png" id="1_0ae7n"]
 [ext_resource type="Texture2D" uid="uid://gthv4snptjsb" path="res://Enemies/Slime/Slime.png" id="1_hsbk2"]
+[ext_resource type="Script" uid="uid://dejjdfhwa1hx6" path="res://Enemies/Scripts/states/enemy_state_machine.gd" id="3_wyclx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wyclx"]
 radius = 2.0
@@ -246,3 +247,7 @@ shape = SubResource("CapsuleShape2D_wyclx")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=195881878]
 libraries/ = SubResource("AnimationLibrary_qsqqn")
 autoplay = &"idle_down"
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=2015110430]
+script = ExtResource("3_wyclx")
+metadata/_custom_type_script = "uid://dejjdfhwa1hx6"
