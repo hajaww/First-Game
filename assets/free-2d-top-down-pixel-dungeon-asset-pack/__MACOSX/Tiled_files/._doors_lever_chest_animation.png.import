@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://roqyvxbfuuwo"
-path="res://.godot/imported/Gemini_Generated_Image_53rm7e53rm7e53rm.png-1137405bbd9dfd48e55c121b9e348d27.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://ux152utwcl8k"
+valid=false
 
 [deps]
 
-source_file="res://Enemies/Slime/Gemini_Generated_Image_53rm7e53rm7e53rm.png"
-dest_files=["res://.godot/imported/Gemini_Generated_Image_53rm7e53rm7e53rm.png-1137405bbd9dfd48e55c121b9e348d27.ctex"]
+source_file="res://assets/free-2d-top-down-pixel-dungeon-asset-pack/__MACOSX/Tiled_files/._doors_lever_chest_animation.png"
 
 [params]
 
