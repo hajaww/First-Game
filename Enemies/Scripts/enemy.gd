@@ -17,23 +17,18 @@ var Invulnerable : bool = false
 ##@onready var hit_box : HitBox = %Hitbox
 @onready var state_machine : EnemyStateMachine = $EnemyStateMachine
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state_machine.initialize( self )
 	player = PlayerManager.player
-	pass # Replace with function body.
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-
 func _physics_process(_delta):
 	move_and_slide()
-
 
 func set_direction( _new_direction : Vector2 ) -> bool:
 	direction = _new_direction
@@ -51,10 +46,16 @@ func set_direction( _new_direction : Vector2 ) -> bool:
 	
 	cardinal_direction = new_dir
 	direction_changed.emit( new_dir )
-	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
+	
+	# --- PERBAIKAN BUG ANIMASI MELAR DI SINI ---
+	# Menggunakan flip_h agar ukuran asli (scale) di Inspector tidak rusak
+	if cardinal_direction == Vector2.LEFT:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
+	# -------------------------------------------
+	
 	return true
-
-
 
 func update_animation( state : String ) -> void:
 	animation_player.play( state + "_" + anim_direction() )

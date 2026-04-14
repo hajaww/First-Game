@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dk7yx78b3yb38" path="res://Enemies/Slime/Shadow.png" id="1_0ae7n"]
 [ext_resource type="Texture2D" uid="uid://gthv4snptjsb" path="res://Enemies/Slime/Slime.png" id="1_hsbk2"]
+[ext_resource type="Script" uid="uid://6ktafxmrx8qb" path="res://Enemies/Scripts/enemy.gd" id="1_wyclx"]
 [ext_resource type="Script" uid="uid://dejjdfhwa1hx6" path="res://Enemies/Scripts/states/enemy_state_machine.gd" id="3_wyclx"]
 [ext_resource type="Script" uid="uid://mcohrknj33dg" path="res://Enemies/Scripts/states/enemy_state_idle.gd" id="4_qsqqn"]
 [ext_resource type="Script" uid="uid://bmtfbanjx2546" path="res://Enemies/Scripts/states/enemy_state_wander.gd" id="5_2osmb"]
@@ -228,6 +229,7 @@ _data = {
 [node name="Slime" type="CharacterBody2D" unique_id=1922876229]
 collision_layer = 256
 collision_mask = 16
+script = ExtResource("1_wyclx")
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="." unique_id=1187734154]
 modulate = Color(0.58456355, 0.071058385, 0, 0.5764706)
