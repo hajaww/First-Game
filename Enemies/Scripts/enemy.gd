@@ -22,6 +22,7 @@ var Invulnerable : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state_machine.initialize( self )
+	player = PlayerManager.player
 	pass # Replace with function body.
 
 
@@ -30,7 +31,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _pyhsics_process(_delta):
+func _physics_process(_delta):
 	move_and_slide()
 
 

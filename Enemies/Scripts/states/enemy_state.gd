@@ -23,5 +23,5 @@ func exit() -> void:
 func process( _delta : float ) -> EnemyState:
 	return null
 
-func pyhsics( _delta : float ) -> EnemyState:
+func physics( _delta : float ) -> EnemyState:
 	return null

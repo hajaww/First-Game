@@ -10,10 +10,14 @@ func _ready():
 	pass
 
 func _process(delta):
-	
+	change_state( current_state.process( delta ))
 	pass
 
 
+
+func _physics_process(delta):
+	change_state( current_state.physics( delta ))
+	pass
 
 
 

@@ -14,7 +14,9 @@ var last_attack_time: int = 0
 var combo_window: int = 800  # Waktu toleransi (ms) untuk lanjut combo (misal 0.8 detik)
 
 func _ready() -> void:
+	PlayerManager.player = self
 	fsm.Initialize(self)
+	pass
 
 func _process(delta: float) -> void:
 	direction = Vector2.ZERO
