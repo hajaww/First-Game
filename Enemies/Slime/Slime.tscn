@@ -6,6 +6,11 @@
 [ext_resource type="Script" uid="uid://dejjdfhwa1hx6" path="res://Enemies/Scripts/states/enemy_state_machine.gd" id="3_wyclx"]
 [ext_resource type="Script" uid="uid://mcohrknj33dg" path="res://Enemies/Scripts/states/enemy_state_idle.gd" id="4_qsqqn"]
 [ext_resource type="Script" uid="uid://bmtfbanjx2546" path="res://Enemies/Scripts/states/enemy_state_wander.gd" id="5_2osmb"]
+[ext_resource type="AudioStream" uid="uid://bbrkab0ovohe8" path="res://Enemies/Slime/hit_01.wav" id="5_dkpye"]
+[ext_resource type="PackedScene" uid="uid://bhxdppgqkyb20" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="7_puctb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dkpye"]
+radius = 6.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wyclx"]
 radius = 2.0
@@ -36,6 +41,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-4.5474735e-13, -6.999999)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_wyclx"]
@@ -124,6 +141,62 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(-4.5474735e-13, -6.999999)]
 }
+
+[sub_resource type="Animation" id="Animation_3of0s"]
+resource_name = "stun_down"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 11, 9, 18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-4.5474735e-13, -6.999999), Vector2(0, -10), Vector2(0, -7), Vector2(0, -7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.99375993, 0, 0.21065113, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_dkpye")
+}],
+"times": PackedFloat32Array(-0.05)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_2osmb"]
 resource_name = "walk_down"
@@ -221,6 +294,7 @@ _data = {
 &"idle_down": SubResource("Animation_wyclx"),
 &"idle_side": SubResource("Animation_qsqqn"),
 &"idle_up": SubResource("Animation_mjfjn"),
+&"stun_down": SubResource("Animation_3of0s"),
 &"walk_down": SubResource("Animation_2osmb"),
 &"walk_side": SubResource("Animation_dkpye"),
 &"walk_up": SubResource("Animation_puctb")
@@ -230,6 +304,13 @@ _data = {
 collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_wyclx")
+
+[node name="HurtBox" parent="." unique_id=1128044427 instance=ExtResource("7_puctb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=554743961]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_dkpye")
+debug_color = Color(0.6111057, 0.5389616, 0, 0.41960785)
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="." unique_id=1187734154]
 modulate = Color(0.58456355, 0.071058385, 0, 0.5764706)
@@ -263,3 +344,13 @@ after_idle_state = NodePath("../Wander")
 [node name="Wander" type="Node" parent="EnemyStateMachine" unique_id=1239845738 node_paths=PackedStringArray("next_state")]
 script = ExtResource("5_2osmb")
 next_state = NodePath("../Idle")
+
+[node name="Stun" type="Node" parent="EnemyStateMachine" unique_id=2012326884]
+
+[node name="Destroy" type="Node" parent="EnemyStateMachine" unique_id=979852992]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1367482506]
+
+[node name="DestroyEffect" type="Sprite2D" parent="." unique_id=747811012]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DestroyEffect" unique_id=2048267168]
