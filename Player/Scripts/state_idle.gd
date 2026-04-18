@@ -1,21 +1,18 @@
 class_name State_Idle
 extends State
 
-@onready var walk = $"../Walk"
-@onready var attack = $"../Attack"
+@onready var walk : State = $"../Walk"
+@onready var attack : State = $"../Attack"
 
 func Enter() -> void:
 	player.UpdateAnimation("idle")
-	player.velocity = Vector2.ZERO
+	pass
 
 func Process(_delta: float) -> State:
-	# Prioritas attack
-	if Input.is_action_just_pressed("attack"):
-		# jangan paksa SetDirection kalau tidak ada input,
-		# biar pakai last_dir sebelumnya
-		if player.direction != Vector2.ZERO:
-			player.SetDirection()
-		return attack
+	if player.direction != Vector2.ZERO:
+		return walk
+	player.velocity = Vector2.ZERO
+	return null
 
 	# Kalau ada input gerak -> Walk
 	if player.direction != Vector2.ZERO:
@@ -23,4 +20,9 @@ func Process(_delta: float) -> State:
 		return walk
 
 	player.velocity = Vector2.ZERO
+	return null
+	
+func HandleInput(_event: InputEvent) -> State:
+	if _event.is_action_pressed("attack"):
+		return attack
 	return null

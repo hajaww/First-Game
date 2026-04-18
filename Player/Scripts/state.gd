@@ -2,11 +2,16 @@ class_name State
 extends Node
 
 # Reference ke Player (di-inject oleh StateMachine.Initialize)
-var player: Player
+static var player: Player
 
+func _ready() -> void:
+	pass
+
+#What happen when playter enters this State?
 func Enter() -> void:
 	pass
 
+#what happen when the player exits this state?
 func Exit() -> void:
 	pass
 

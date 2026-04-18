@@ -1,39 +1,40 @@
 class_name PlayerStateMachine
 extends Node
 
-var states: Array = []          # longgarkan typing biar gak ribet
-var prev_state: State = null
-var current_state: State = null
+var states: Array = [ State ]       
+var prev_state: State 
+var current_state: State 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
+	pass
 
 func _process(delta: float) -> void:
-	if current_state:
-		ChangeState(current_state.Process(delta))
+	ChangeState(current_state.Process(delta))
+	pass
 
 func _physics_process(delta: float) -> void:
-	if current_state:
-		ChangeState(current_state.Physics(delta))
+	ChangeState(current_state.Physics(delta))
+	pass
 
 func _unhandled_input(event: InputEvent) -> void:
-	if current_state:
-		ChangeState(current_state.HandleInput(event))
+	ChangeState(current_state.HandleInput(event))
+	pass
 
-func Initialize(_player: Player) -> void:
-	states.clear()
+func Initialize( _player : Player)-> void:
+	states = []
 
 	for c in get_children():
 		if c is State:
-			c.player = _player
 			states.append(c)
 
 	if states.size() > 0:
-		ChangeState(states[0]) # state pertama = Idle
+		states[0].player = _player
+		ChangeState( states[0])
 		process_mode = Node.PROCESS_MODE_INHERIT
 
 func ChangeState(new_state: State) -> void:
-	if new_state == null or new_state == current_state:
+	if new_state == null || new_state == current_state:
 		return
 
 	if current_state:
