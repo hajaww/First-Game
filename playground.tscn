@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dqidnxbhppavs" path="res://Player/player.tscn" id="1_rupst"]
 [ext_resource type="PackedScene" uid="uid://b0cb28u0kk3ic" path="res://Tile Maps/grass-01.tscn" id="2_wt17y"]
 [ext_resource type="PackedScene" uid="uid://dc0nuxyqpglyc" path="res://Props/Plants/plant.tscn" id="3_m8u5f"]
-[ext_resource type="PackedScene" uid="uid://vmxvduguxuc" path="res://Enemies/Slime/Slime.tscn" id="4_is3ju"]
+[ext_resource type="PackedScene" uid="uid://vmxvduguxuc" path="res://Enemies/Slime/slime.tscn" id="4_is3ju"]
 
 [node name="Playground" type="Node2D" unique_id=1383244103]
 y_sort_enabled = true

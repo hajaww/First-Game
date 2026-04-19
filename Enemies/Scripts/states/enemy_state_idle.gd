@@ -18,7 +18,7 @@ func init() -> void:
 func enter() -> void:
 	enemy.velocity = Vector2.ZERO
 	_timer = randf_range( state_duration_min, state_duration_max)
-	enemy.update_animation(anim_name)
+	enemy.update_animation( anim_name )
 	pass
 
 

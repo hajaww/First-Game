@@ -12,8 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://bhxdppgqkyb20" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="7_puctb"]
 [ext_resource type="Texture2D" uid="uid://534dxk4exg2r" path="res://Enemies/Slime/DestroySmoke.png" id="9_3of0s"]
 [ext_resource type="Script" uid="uid://dywbi7tua2cvf" path="res://Enemies/Scripts/states/enemy_state_stun.gd" id="10_5fs0k"]
+[ext_resource type="Script" uid="uid://colmbcirbafdy" path="res://Enemies/Scripts/states/enemy_state_destroy.gd" id="12_843tw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dkpye"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pydiu"]
 radius = 6.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wyclx"]
@@ -125,13 +126,13 @@ tracks/4/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("6_suwpu")
 }],
-"times": PackedFloat32Array(0.1)
+"times": PackedFloat32Array(0.05)
 }
 tracks/4/use_blend = true
 tracks/5/type = "animation"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("DestroyEffect/AnimationPlayer")
+tracks/5/path = NodePath("DestroyEffectSprite/AnimationPlayer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -211,7 +212,7 @@ tracks/4/use_blend = true
 tracks/5/type = "animation"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("DestroyEffect/AnimationPlayer")
+tracks/5/path = NodePath("DestroyEffectSprite/AnimationPlayer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -291,7 +292,7 @@ tracks/4/use_blend = true
 tracks/5/type = "animation"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("DestroyEffect/AnimationPlayer")
+tracks/5/path = NodePath("DestroyEffectSprite/AnimationPlayer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -726,19 +727,20 @@ collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_wyclx")
 
-[node name="HurtBox" parent="." unique_id=1128044427 instance=ExtResource("7_puctb")]
+[node name="HurtBox" parent="." unique_id=1639654054 instance=ExtResource("7_puctb")]
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=554743961]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1621891990]
 position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_dkpye")
-debug_color = Color(0.6111057, 0.5389616, 0, 0.41960785)
+shape = SubResource("CircleShape2D_pydiu")
+debug_color = Color(0.79987663, 0.42143062, 0, 0.41960785)
 
-[node name="HitBox" parent="." unique_id=531440719 instance=ExtResource("3_j1ull")]
+[node name="HitBox" parent="." unique_id=1331477452 instance=ExtResource("3_j1ull")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1085929112]
-position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_dkpye")
-debug_color = Color(0.9792282, 0, 0.37944627, 0.41960785)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1791881893]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_pydiu")
+debug_color = Color(0.9857984, 0, 0.31913087, 0.41960785)
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="." unique_id=1187734154]
 modulate = Color(0.58456355, 0.071058385, 0, 0.5764706)
@@ -747,7 +749,7 @@ texture = ExtResource("1_0ae7n")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=711764933]
 position = Vector2(-4.5474735e-13, -6.999999)
-scale = Vector2(0.484375, 0.390625)
+scale = Vector2(0.484375, 0.41406253)
 texture = ExtResource("1_hsbk2")
 hframes = 16
 vframes = 2
@@ -771,22 +773,25 @@ after_idle_state = NodePath("../Wander")
 
 [node name="Wander" type="Node" parent="EnemyStateMachine" unique_id=1239845738 node_paths=PackedStringArray("next_state")]
 script = ExtResource("5_2osmb")
+wander_speed = 25.0
 next_state = NodePath("../Idle")
 
-[node name="Stun" type="Node" parent="EnemyStateMachine" unique_id=2012326884]
+[node name="Stun" type="Node" parent="EnemyStateMachine" unique_id=2012326884 node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_5fs0k")
+next_state = NodePath("../Idle")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine" unique_id=979852992]
+script = ExtResource("12_843tw")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1367482506]
 max_polyphony = 4
 
-[node name="DestroyEffect" type="Sprite2D" parent="." unique_id=747811012]
+[node name="DestroyEffectSprite" type="Sprite2D" parent="." unique_id=747811012]
 visible = false
 position = Vector2(0, -3)
 scale = Vector2(0.3046875, 0.359375)
 texture = ExtResource("9_3of0s")
 hframes = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DestroyEffect" unique_id=2048267168]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DestroyEffectSprite" unique_id=2048267168]
 libraries/ = SubResource("AnimationLibrary_mp7rs")

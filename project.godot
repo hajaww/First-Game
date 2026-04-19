@@ -47,7 +47,7 @@ project/assembly_name="Souls Ahh Knight"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/auto_backup/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

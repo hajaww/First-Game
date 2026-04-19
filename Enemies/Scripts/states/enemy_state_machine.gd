@@ -10,9 +10,8 @@ func _ready():
 	pass
 
 func _process(delta):
-	change_state( current_state.process( delta ))
+	change_state( current_state.process( delta ) )
 	pass
-
 
 
 func _physics_process(delta):
@@ -33,10 +32,10 @@ func initialize( _enemy : Enemy) -> void:
 		s.state_machine = self
 		s.init()
 
-
 	if states.size() > 0:
 		change_state(states[0] )
 		process_mode = Node.PROCESS_MODE_INHERIT
+	pass
 		
 
 func change_state( new_state : EnemyState) -> void:
