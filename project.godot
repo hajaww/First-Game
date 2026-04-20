@@ -22,7 +22,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Souls Knight Ripoff"
+config/name="WildBound"
 run/main_scene="uid://bxcbcyao3a1rb"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
@@ -36,9 +36,8 @@ PlayerManager="*uid://4n5oxjn66drt"
 
 window/size/viewport_width=480
 window/size/viewport_height=258
-window/size/resizable=false
-window/size/window_width_override=1920
-window/size/window_height_override=1080
+window/size/window_width_override=1366
+window/size/window_height_override=768
 window/stretch/mode="canvas_items"
 
 [dotnet]
