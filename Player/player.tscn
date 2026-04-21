@@ -9,8 +9,10 @@
 [ext_resource type="Script" uid="uid://d3bspcxkvp32q" path="res://Player/Scripts/state_idle.gd" id="9_x3vf3"]
 [ext_resource type="Script" uid="uid://cq6rqbo1xom6f" path="res://Player/Scripts/state_walk.gd" id="10_apopc"]
 [ext_resource type="Script" uid="uid://colmbcirbafdy" path="res://Enemies/Scripts/states/enemy_state_destroy.gd" id="11_p5o4e"]
+[ext_resource type="Script" uid="uid://32y8qrkt6cm4" path="res://Player/Scripts/state_stun.gd" id="12_lfmf2"]
 [ext_resource type="PackedScene" uid="uid://dd2dl5nxradn3" path="res://GeneralNodes/HitBox/hit_box.tscn" id="14_gu6f8"]
 [ext_resource type="Script" uid="uid://bj8s3818rmfmp" path="res://Player/Scripts/state_attack.gd" id="15_dkpta"]
+[ext_resource type="AudioStream" uid="uid://b13pk24xnx4dk" path="res://Player/Audio/hit_player.wav" id="15_lfmf2"]
 [ext_resource type="PackedScene" uid="uid://bhxdppgqkyb20" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="21_7emwf"]
 [ext_resource type="Script" uid="uid://dlcvutb7fde82" path="res://Player/Scripts/PlayerCamera.gd" id="21_gpjlu"]
 [ext_resource type="Script" uid="uid://datx5or5fifjx" path="res://Player/Scripts/PlayerInteractionsHost.gd" id="21_hshwv"]
@@ -534,6 +536,73 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkpta"]
 radius = 4.0
 
+[sub_resource type="Animation" id="Animation_76lrf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_efx54"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.70000005, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.21568628), Color(1, 1, 1, 1), Color(1, 1, 1, 0.21568628), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5882353), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_lfmf2")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_755ss"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bbimk"]
+_data = {
+&"RESET": SubResource("Animation_76lrf"),
+&"damaged": SubResource("Animation_efx54"),
+&"default": SubResource("Animation_755ss")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=382310605]
 z_index = 2
 y_sort_enabled = true
@@ -600,6 +669,9 @@ attack_sound = ExtResource("8_apopc")
 [node name="Destroy" type="Node" parent="StateMachine" unique_id=984028556]
 script = ExtResource("11_p5o4e")
 
+[node name="Stun" type="Node" parent="StateMachine" unique_id=592044824]
+script = ExtResource("12_lfmf2")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=562181076]
 zoom = Vector2(1.57, 1.57)
 editor_draw_limits = true
@@ -615,6 +687,7 @@ position = Vector2(0, -8)
 script = ExtResource("21_hshwv")
 
 [node name="HitBox" parent="." unique_id=1331477452 instance=ExtResource("14_gu6f8")]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=172922823]
 position = Vector2(0, -3)
@@ -622,3 +695,4 @@ shape = SubResource("CircleShape2D_dkpta")
 debug_color = Color(0.666843, 0.5114431, 1.92523e-07, 0.41960785)
 
 [node name="EffectAnimationPlayer" type="AnimationPlayer" parent="." unique_id=221327182]
+libraries/ = SubResource("AnimationLibrary_bbimk")

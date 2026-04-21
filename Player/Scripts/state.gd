@@ -3,8 +3,13 @@ extends Node
 
 # Reference ke Player (di-inject oleh StateMachine.Initialize)
 static var player: Player
+static	var state_machine : PlayerStateMachine
 
 func _ready() -> void:
+	pass
+	
+
+func init() -> void:
 	pass
 
 #What happen when playter enters this State?
