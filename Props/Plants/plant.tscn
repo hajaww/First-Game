@@ -8,7 +8,7 @@
 size = Vector2(12, 10.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bmnw"]
-size = Vector2(10, 5.75)
+size = Vector2(11, 12.75)
 
 [node name="Plant" type="Node2D" unique_id=1067323108]
 script = ExtResource("1_djs60")
@@ -33,5 +33,5 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=303612517]
-position = Vector2(0, -0.125)
+position = Vector2(-0.5, -3.625)
 shape = SubResource("RectangleShape2D_2bmnw")
