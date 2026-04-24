@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ylqdmlipffxx" path="res://GUI/player_hud/heart_gui.tscn" id="2_oghrr"]
 
 [node name="PlayerHud" type="CanvasLayer" unique_id=801236932]
+layer = 2
 script = ExtResource("1_oghrr")
 
 [node name="Control" type="Control" parent="." unique_id=1285156054]

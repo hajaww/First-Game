@@ -38,5 +38,8 @@ position = Vector2(88, 142)
 position = Vector2(97, 67)
 
 [node name="LevelTransition" parent="." unique_id=1745839851 instance=ExtResource("5_mwxiv")]
-position = Vector2(211, 7)
-target_transition_area = ""
+position = Vector2(209, -1)
+scale = Vector2(2.4130049, 0.48465413)
+level = "uid://dka45o0iav21u"
+size = 1
+side = 2
