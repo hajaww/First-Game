@@ -7,7 +7,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwydo"]
 resource_local_to_scene = true
-size = Vector2(64, 66.29004)
+size = Vector2(64, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8itkk"]
 resource_local_to_scene = true
@@ -24,17 +24,16 @@ layer_1/tile_data = PackedInt32Array(196607, 65537, 2, 131072, 65537, 2, 131073,
 position = Vector2(384, 155)
 
 [node name="LevelTransition" type="Area2D" parent="." unique_id=1745839851]
-position = Vector2(210, 254)
+position = Vector2(208, 256)
 scale = Vector2(0.9973361, 1.0038924)
 collision_layer = 0
 monitorable = false
 script = ExtResource("4_4t7i1")
 level = "uid://beeymqu2s3d2n"
 side = 3
-snap_to_grid = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition" unique_id=1324500398]
-position = Vector2(0, 10.884857)
+position = Vector2(0, 16)
 scale = Vector2(1.1073949, 0.29834688)
 shape = SubResource("RectangleShape2D_pwydo")
 debug_color = Color(0.8143336, 0.0020191811, 0.97924477, 0.41960785)
