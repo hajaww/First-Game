@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d053i3eq7vgm8"
-path="res://.godot/imported/Gemini_Generated_Image_u0anhvu0anhvu0an__2_-removebg-preview.png-d1df966c37be374b764569f68b8a5fa8.ctex"
+path="res://.godot/imported/Jamu.png-de37443d407c9a36365d34deb034f10f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/sprites/Gemini_Generated_Image_u0anhvu0anhvu0an__2_-removebg-preview.png"
-dest_files=["res://.godot/imported/Gemini_Generated_Image_u0anhvu0anhvu0an__2_-removebg-preview.png-d1df966c37be374b764569f68b8a5fa8.ctex"]
+source_file="res://Items/sprites/Jamu.png"
+dest_files=["res://.godot/imported/Jamu.png-de37443d407c9a36365d34deb034f10f.ctex"]
 
 [params]
 

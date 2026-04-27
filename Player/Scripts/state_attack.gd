@@ -30,16 +30,14 @@ func Enter() -> void:
 	
 	# Nyalakan sensor pedang setelah delay 0.075 detik
 	await get_tree().create_timer(0.075).timeout
-	if hurt_box:
+	if attacking:
 		hurt_box.monitoring = true
 	pass
 
 func Exit() -> void:
 	animation_player.animation_finished.disconnect(EndAttack)
 	attacking = false
-
-	if hurt_box:
-		hurt_box.monitoring = false
+	hurt_box.monitoring = false
 	pass
 
 func Process(_delta: float) -> State:

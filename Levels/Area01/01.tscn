@@ -57,21 +57,17 @@ position = Vector2(16, 0)
 shape = SubResource("RectangleShape2D_8itkk")
 debug_color = Color(0.8143336, 0.0020191811, 0.97924477, 0.41960785)
 
-[node name="ItemPickup" parent="." unique_id=322071255 instance=ExtResource("5_8itkk")]
-position = Vector2(237, 144)
-scale = Vector2(0.3557889, 0.30900228)
+[node name="ItemPickup5" parent="." unique_id=322071255 instance=ExtResource("5_8itkk")]
+position = Vector2(242, 155)
 
-[node name="ItemPickup2" parent="." unique_id=1244082227 instance=ExtResource("5_8itkk")]
-position = Vector2(221, 150)
-scale = Vector2(0.3557889, 0.31113538)
+[node name="ItemPickup6" parent="." unique_id=2146108276 instance=ExtResource("5_8itkk")]
+position = Vector2(211, 160)
 item_data = ExtResource("6_xhij5")
 
-[node name="ItemPickup3" parent="." unique_id=381117836 instance=ExtResource("5_8itkk")]
-position = Vector2(253.00002, 154)
-scale = Vector2(0.3557889, 0.30900228)
-item_data = ExtResource("7_th3kk")
-
-[node name="ItemPickup4" parent="." unique_id=2092451457 instance=ExtResource("5_8itkk")]
-position = Vector2(254, 139)
-scale = Vector2(0.3557889, 0.30900228)
+[node name="ItemPickup7" parent="." unique_id=804489911 instance=ExtResource("5_8itkk")]
+position = Vector2(242, 130)
 item_data = ExtResource("8_th3kk")
+
+[node name="ItemPickup8" parent="." unique_id=1817280260 instance=ExtResource("5_8itkk")]
+position = Vector2(222, 137)
+item_data = ExtResource("7_th3kk")

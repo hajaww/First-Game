@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c7hijomdbjk36"]
 
 [ext_resource type="Script" uid="uid://b2lgrv2my8q4" path="res://Items/scripts/item_data.gd" id="1_5ujwg"]
+[ext_resource type="Script" uid="uid://bs503tua7x8j" path="res://Items/item effects/item_effect.gd" id="1_yq8b3"]
 [ext_resource type="Texture2D" uid="uid://cvn7g14qebw4m" path="res://Items/sprites/items.png" id="2_kvxp5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yq8b3"]
@@ -10,6 +11,6 @@ region = Rect2(0, 0, 32, 32)
 [resource]
 script = ExtResource("1_5ujwg")
 name = "Gem"
-description = "A valuable gem"
+description = "A valuable akik gem!"
 texture = SubResource("AtlasTexture_yq8b3")
 metadata/_custom_type_script = "uid://b2lgrv2my8q4"
