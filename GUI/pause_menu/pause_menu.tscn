@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bwsyopxofq5gw" path="res://GUI/pause_menu/pause_menu.gd" id="1_4w82k"]
 [ext_resource type="Texture2D" uid="uid://cvn7g14qebw4m" path="res://Items/sprites/items.png" id="2_yiq8o"]
+[ext_resource type="Script" uid="uid://cy3vr8cglh4ot" path="res://GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="3_36pfd"]
 [ext_resource type="PackedScene" uid="uid://bxch0vypuku6c" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="3_rsqrg"]
+[ext_resource type="Resource" uid="uid://dhtmg7y21do1p" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="4_ewgu5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rsqrg"]
 atlas = ExtResource("2_yiq8o")
@@ -56,6 +58,24 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "[ paused ]"
 
+[node name="ItemDescription" type="Label" parent="Control" unique_id=584473736]
+modulate = Color(1, 1, 1, 0.36862746)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=873780037]
 layout_mode = 0
 offset_left = 32.0
@@ -67,6 +87,8 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_36pfd")
 [node name="GridContainer" type="GridContainer" parent="Control/PanelContainer" unique_id=1147015181]
 layout_mode = 2
 columns = 5
+script = ExtResource("3_36pfd")
+data = ExtResource("4_ewgu5")
 
 [node name="InventorySlot" parent="Control/PanelContainer/GridContainer" unique_id=100008143 instance=ExtResource("3_rsqrg")]
 layout_mode = 2
@@ -112,3 +134,6 @@ text = "Save"
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "Load"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control" unique_id=1519744083]
+max_polyphony = 4

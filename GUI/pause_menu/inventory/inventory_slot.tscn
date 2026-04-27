@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bxch0vypuku6c"]
 
+[ext_resource type="Script" uid="uid://bb36kpl15p24h" path="res://GUI/pause_menu/inventory/scripts/inventory_slot_ui.gd" id="1_d72hl"]
 [ext_resource type="Texture2D" uid="uid://cvn7g14qebw4m" path="res://Items/sprites/items.png" id="1_eqhwg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d72hl"]
@@ -11,6 +12,7 @@ clip_contents = true
 custom_minimum_size = Vector2(32, 32)
 offset_right = 32.0
 offset_bottom = 32.0
+script = ExtResource("1_d72hl")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1216847366]
 layout_mode = 0

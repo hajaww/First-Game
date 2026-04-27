@@ -20,19 +20,20 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Control" unique_id=1536309344]
-position = Vector2(19, 6)
+position = Vector2(455, 6)
 texture = ExtResource("1_alx7a")
 region_enabled = true
 region_rect = Rect2(29, 0, 34, 8)
 
 [node name="HFlowContainer" type="HFlowContainer" parent="Control" unique_id=1171227468]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 14.0
-offset_right = 131.0
-offset_bottom = 42.0
+offset_left = 343.0
+offset_top = 13.0
+offset_right = 473.0
+offset_bottom = 41.0
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 2
+alignment = 2
 last_wrap_alignment = 1
 
 [node name="Heart" parent="Control/HFlowContainer" unique_id=596464300 instance=ExtResource("2_oghrr")]
